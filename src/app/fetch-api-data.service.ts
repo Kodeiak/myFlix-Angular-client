@@ -3,7 +3,7 @@ import { map, catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 
-const apiUrl = "YOUR_HOSTED_API_URL_HERE/";
+const apiUrl = "https://myflixdb-kodeiak.herokuapp.com/";
 @Injectable({
   // make this service available everywhere
   providedIn: 'root'
@@ -24,7 +24,7 @@ export class FetchApiDataService {
   // post user login
   public userLogin(userDetails: any): Observable<any> {
     console.log(userDetails);
-    return this.http.post(apiUrl, userDetails).pipe(
+    return this.http.post(apiUrl + "login", userDetails).pipe(
       catchError(this.handleError)
     );
   }
