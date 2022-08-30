@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { map, catchError } from 'rxjs/operators';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 
 const apiUrl = "https://myflixdb-kodeiak.herokuapp.com/";
@@ -23,16 +23,22 @@ export class FetchApiDataService {
 
   // post user login
   public userLogin(userDetails: any): Observable<any> {
-    console.log(userDetails);
-    return this.http.post(apiUrl + "login", userDetails).pipe(
-      catchError(this.handleError)
+    return this.http
+      .post(apiUrl + "login?Username=" + userDetails.username + "&Password=" + userDetails.password, userDetails )
+      .pipe(catchError(this.handleError)
     );
   }
 
   // Get all movies
   public getMovies(): Observable<any> {
-    return this.http.get(apiUrl + "movies").pipe(
-      catchError(this.handleError)
+    const token = localStorage.getItem("token");
+    return this.http
+      .get(apiUrl + "movies", {
+        headers: new HttpHeaders({
+          Authorization: "Bearer " + token,
+        })
+      })
+      .pipe(catchError(this.handleError)
     );
   }
 
