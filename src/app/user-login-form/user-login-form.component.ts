@@ -29,7 +29,7 @@ export class UserLoginFormComponent implements OnInit {
         this.dialogRef.close();
         console.log(result);
         localStorage.setItem("token", result.token);
-        localStorage.setItem("user", result.username);
+        localStorage.setItem("user", result.user.username);
         this.snackBar.open(result, "OK", {
           duration: 2000
         });

@@ -1,0 +1,17 @@
+<div style="display: flex;">
+  <mat-card>
+    <mat-card-header style="height: 100px">
+      <mat-card-title>{{userData.username}}'s Profile</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Username: {{userData.username}}</p>
+      <p>Email: {{userData.email}}</p>
+      <p>Password: {{userData.password}}</p>
+      <p>Birthday: {{userData.birthday}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button (click)="editUserDialog()" color="primary" >Edit</button>
+      <button mat-raised-button (click)="deleteUser()" color="warn" >Delete</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
