@@ -22,7 +22,10 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
     this.getUserData();
   }
-
+  /**
+   * Call API method to get user data
+   * @returns user data
+   */
   getUserData(): void {
     const username = localStorage.getItem("user") || "";
     this.fetchApiData.getUser(username).subscribe((resp: any) => {
@@ -31,13 +34,17 @@ export class UserProfileComponent implements OnInit {
       return this.userData;
     });
   }
-
+  /**
+   * Open dialog to edit user
+   */
   editUserDialog(): void {
     this.dialog.open(EditUserFormComponent, {
       width: "300px"
     });
   }
-
+  /**
+   * Calls API method to delete user profile
+   */
   deleteUser(): void{
     const username = localStorage.getItem("user") || "";
     if (

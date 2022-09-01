@@ -21,6 +21,9 @@ export class EditUserFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Call API method to update user
+   */
   editUser(): void {
     console.log(this.userData);
     const username = localStorage.getItem("user") || "";
